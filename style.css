@@ -34,7 +34,7 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 700px;
     height: 100%;
     z-index: 1;
 }
@@ -93,8 +93,12 @@ nav a {
 
 .products {
     padding: 20px;
-    background-color: azure;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
+}
+
+.products-text{
+    top: 12px;
 }
 
 .products-text h2{
@@ -105,9 +109,9 @@ nav a {
     text-align: center;
 }
 
-.products img {
-    width: 70px;
-    height: 70px;
+.product-row .product img {
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     display: flex;
     flex-direction: row;
