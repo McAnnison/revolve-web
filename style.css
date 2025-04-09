@@ -1,98 +1,77 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
 header {
-    animation: fadeIn 2s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 90vh; 
+    overflow: hidden;
 }
 
-.promo-content h1 {
-    animation: slideInFromLeft 1.5s ease-out;
+.header-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
-.promo-content p {
-    animation: fadeIn 2s ease-in-out;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
 }
 
-.promo-content .btn {
-    animation: bounceIn 2s ease-in-out;
+.logo img {
+    height: 40px;
+    color: white; 
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* green color */
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    transition: transform 0.3s ease;
-}
-
-.promo-content .btn:hover {
-    transform: scale(1.1);
-}
-
-.product {
-    animation: zoomIn 1.5s ease-in-out;
-}
-
-.about-content img {
-    animation: rotateIn 1.5s ease-in-out;
-}
-
-/* Keyframes for Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInFromLeft {
-    from {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    60% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes zoomIn {
-    from {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes rotateIn {
-    from {
-        transform: rotate(-360deg);
-        opacity: 0;
-    }
-    to {
-        transform: rotate(0);
-        opacity: 1;
-    }
+    margin-top: 20px;
 }
