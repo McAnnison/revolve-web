@@ -75,3 +75,20 @@ nav a {
     border-radius: 5px;
     margin-top: 20px;
 }
+
+.btn:hover {
+    background-color: #45a049; /* darker green */
+}
+
+.products {
+    background-color: azure;
+    padding: 20px;
+}
+
+.products-text h2{
+    text-align: center;
+}
+
+.products-text p{
+    text-align: center;
+}
