@@ -1,11 +1,10 @@
-/* * {
-    font-family: "Quick Sand", sans-serif;
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Dancing Script", cursive;    
     
-    
-} */
-
-
-
+} 
 
 header {
     position: relative;
@@ -27,16 +26,17 @@ header {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: white;
+    color: rgb(66, 65, 65);
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: 400;
+    font-size: 18px;
     font-style: normal;
 }
 
 .logo img {
     height: 40px;
-    color: white; 
+    color: rgb(58, 57, 57); 
 }
 
 .background-image {
@@ -57,12 +57,6 @@ header {
     object-fit: cover;
 }
 
-.empty{
-    padding: 20px;
-    border-radius: 10px 20px 36px 0px;
-    color: grey;
-}
-
 nav ul {
     display: flex;
     gap: 20px;
@@ -72,7 +66,8 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 100;
+    font-family: "Poppins", sans-serif;
 }
 
 .hero {
@@ -92,21 +87,30 @@ nav a {
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
     font-weight: 400;
+    font-size: 76px;
     font-style: normal;
     color: yellow;
 }
+
+.hero p {
+    font-family: "";
+    font-size: 30px;
+}
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgb(230, 230, 2); /* green color */
-    color: white;
+    background-color: rgb(230, 230, 2); 
+    color: rgb(15, 15, 15);
     text-decoration: none;
+    font-size: 24px;
     border-radius: 5px;
+    font-family: "Poppins", sans-serif;
     margin-top: 20px;
 }
 
 .btn:hover {
-    background-color: rgb(117, 117, 2); /* darker green */
+    background-color: rgb(117, 117, 2); 
 }
 
 .products {
