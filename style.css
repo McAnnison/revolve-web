@@ -186,7 +186,7 @@ nav a {
     border-radius: 50%;
     margin-bottom: 10px;
     height: 160px;
-    gap: 5px;
+    row-gap: 2px;
 }
 
 .product h3 {
@@ -198,77 +198,80 @@ nav a {
 .product p {
     font-size: 1.2rem;
     color: #666;
-}
-
-/* Reset and general styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #1a1a1a; /* Dark background as in the image */
-    color: #fff;
+    text-align: justify;
 }
 
 /* Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px;
+    border-radius: 50% 10% 50% 10%;
+    background-color: rgb(7, 7, 7);
 }
 
 /* Section */
-.section {
-    padding: 50px 0;
+.oriental-taste{
+    padding: 20px 0;
     text-align: center;
     position: relative;
 }
 
-/* Headings */
-.section h2 {
-    font-family: 'Playfair Display', serif; /* Use a cursive font similar to the image */
+.oriental-taste img {
+    width: 80px;
+    height: 80px;
+    margin-left: 12px;
+    border-radius: 50%;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+
+.oriental-taste h2 {
     font-size: 2.5rem;
-    color: #fff;
+    color: gold;
+    margin-left: 800px;
     margin-bottom: 20px;
 }
 
-/* Paragraphs */
-.section p {
+.oriental-taste p {
     font-size: 1.1rem;
-    color: #ccc;
+    color: #ffffff;
     margin-bottom: 30px;
     line-height: 1.6;
+    text-align: right;
 }
 
-/* Image Container */
-.image-container {
-    margin-bottom: 20px;
-}
 
-.image-container img {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 50%; /* Circular images like in the image */
-}
-
-/* Button */
 .button {
     display: inline-block;
     padding: 15px 30px;
-    background-color: #f5c518; /* Yellow button color */
+    background-color: #f5c518; 
     color: #1a1a1a;
     text-decoration: none;
     font-weight: bold;
+    margin-left: 800px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.button2 {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f5c518; 
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 10px;
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
 .button:hover {
+    background-color: #e0b015;
+}
+.button2:hover {
     background-color: #e0b015;
 }
 
@@ -280,12 +283,14 @@ body {
 
 /* Statistics Section */
 .statistics-section {
-    background-color: #2a2a2a; /* Slightly lighter dark background */
-    padding: 50px;
+    background-color: #2a2a2a; 
+    padding: 30px ;
     border-radius: 10px;
+    width: 900px;
+    margin-left: 40px;    
 }
 
-.statistics {
+.statistics-container {
     display: flex;
     justify-content: space-around;
     margin: 30px 0;
@@ -293,6 +298,9 @@ body {
 
 .statistic {
     text-align: center;
+    padding: 10px 10px;
+    border: #ddd 3px solid;
+    border-radius: 50%;
 }
 
 .statistic h3 {
@@ -302,14 +310,39 @@ body {
 }
 
 .statistic p {
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #ccc;
 }
 
-/* Chicken Grill Section */
-.chicken-grill {
-    background: url('path/to/wave-background-right.png') no-repeat right center; /* Wave on the right */
-    background-size: contain;
+.chicken-grill{
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.chicken-grill img {
+    width: 180px;
+    height: 180px;
+    margin-left: 12px;
+    border-radius: 50%;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+}
+
+
+.chicken-grill h2 {
+    font-size: 2.5rem;
+    color: gold;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.chicken-grill p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-align: left;
 }
 
 /* Responsive Design */
