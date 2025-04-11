@@ -163,6 +163,7 @@ nav a {
     .product-row {
         flex-direction: column;
         align-items: center;
+        display: block;
     }
 }
 
