@@ -334,10 +334,10 @@ nav a {
 }
 
 .contact-form {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    top: 12px;
+    padding: 20px 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -349,8 +349,8 @@ nav a {
 }
 
 .contact-text h2 {
-    color: #2c3e50;
-    font-size: 2.2rem;
+    color: #030303;
+    font-size: 2.5rem;
     margin-bottom: 15px;
 }
 
@@ -367,7 +367,7 @@ form {
 }
 
 input, textarea {
-    padding: 15px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 1rem;
@@ -411,66 +411,47 @@ button:hover {
     }
 }
 
-.footer {
-    background-color: #333;
-    color: #fff;
+footer {
+    background-color: #1e1e1f;
+    color: #ecf0f1;
     padding: 40px 20px;
+    text-align: center;
 }
-
 .footer-container {
     display: flex;
+    justify-content: space-around;
     flex-wrap: wrap;
-    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
 }
-
-.footer-about, .footer-contact, .footer-links {
+.footer-about, .footer-links {
     flex: 1;
     min-width: 250px;
     margin: 20px;
 }
-
-.footer-about h3, .footer-contact h3, .footer-links h3 {
+h3 {
+    color: #ffcc00;
     margin-bottom: 15px;
 }
-
-.footer-contact .form-group {
-    margin-bottom: 15px;
+p {
+    line-height: 1.5;
 }
-
-.footer-contact input, 
-.footer-contact textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.footer-links {
-    margin-top: 20px;
-}
-
 .footer-links ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
-
-.footer-links ul li {
+.footer-links li {
     margin: 10px 0;
 }
-
 .footer-links a {
-    color: #ff9800;
+    color: #ecf0f1;
     text-decoration: none;
+    transition: color 0.3s;
 }
-
+.footer-links a:hover {
+    color: #ffcc00;
+}
 .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
+    font-size: 14px;
 }
-
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        }                              
-    }
