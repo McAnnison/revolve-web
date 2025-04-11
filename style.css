@@ -217,9 +217,19 @@ nav a {
     position: relative;
 }
 
-.oriental-taste img {
-    width: 80px;
-    height: 80px;
+.container img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    filter: brightness(0.8);
+    transition: filter 0.3s ease;
+    top: 0;
+    left: 0;
+}
+
+.img2{
+    width: 180px;
+    height: 180px;
     margin-left: 12px;
     border-radius: 50%;
     filter: brightness(0.8);
@@ -275,12 +285,6 @@ nav a {
     background-color: #e0b015;
 }
 
-/* Oriental Taste Section */
-.oriental-taste {
-    background: url('path/to/wave-background.png') no-repeat left center; /* Add a wave-like background */
-    background-size: contain;
-}
-
 /* Statistics Section */
 .statistics-section {
     background-color: #2a2a2a; 
@@ -320,14 +324,7 @@ nav a {
     position: relative;
 }
 
-.chicken-grill img {
-    width: 180px;
-    height: 180px;
-    margin-left: 12px;
-    border-radius: 50%;
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
-}
+
 
 
 .chicken-grill h2 {
