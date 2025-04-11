@@ -200,57 +200,138 @@ nav a {
     color: #666;
 }
 
-.just {
-    position: relative;
-    width: 100%;
+/* Reset and general styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a; /* Dark background as in the image */
+    color: #fff;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
-.content {
-    position: relative;
-    width: 100%;
-}
-
-.hero-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    min-height: 400px;
-}
-
-.text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* Section */
+.section {
+    padding: 50px 0;
     text-align: center;
-    width: 90%;
-    max-width: 800px;
-    z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
 }
 
-.text-overlay h2 {
-    color: #FFD700; 
-    font-size: 3.5rem;
-    margin-bottom: 8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-left: 700px;
-    margin-top: 0;
+/* Headings */
+.section h2 {
+    font-family: 'Playfair Display', serif; /* Use a cursive font similar to the image */
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.text-overlay p {
-    color: #FFD700; 
-    font-size: 1.5rem;
-    font-weight: 500;
-    background-color: rgba(0,0,0,0.5);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+/* Paragraphs */
+.section p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Image Container */
+.image-container {
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%; /* Circular images like in the image */
+}
+
+/* Button */
+.button {
     display: inline-block;
+    padding: 15px 30px;
+    background-color: #f5c518; /* Yellow button color */
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
+.button:hover {
+    background-color: #e0b015;
+}
+
+/* Oriental Taste Section */
+.oriental-taste {
+    background: url('path/to/wave-background.png') no-repeat left center; /* Add a wave-like background */
+    background-size: contain;
+}
+
+/* Statistics Section */
+.statistics-section {
+    background-color: #2a2a2a; /* Slightly lighter dark background */
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.statistics {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.statistic {
+    text-align: center;
+}
+
+.statistic h3 {
+    font-size: 2.5rem;
+    color: #f5c518; /* Yellow for numbers */
+    margin-bottom: 10px;
+}
+
+.statistic p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Chicken Grill Section */
+.chicken-grill {
+    background: url('path/to/wave-background-right.png') no-repeat right center; /* Wave on the right */
+    background-size: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-container img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .statistics {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+}
 /* Optional overlay to improve text readability */
 .content::after {
     content: '';
