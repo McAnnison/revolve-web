@@ -152,6 +152,18 @@ nav a {
     .hero h2 {
         font-size: 48px;
     }
+    .hero p {
+        font-size: 18px;
+    }
+
+    .products {
+        padding: 10px;
+    }
+
+    .product-row {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (max-width: 500px) {
