@@ -218,6 +218,9 @@ nav a {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+.footer-links {
+    margin-top: 20px;
+}
 
 .footer-links ul {
     list-style-type: none;
@@ -241,5 +244,5 @@ nav a {
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
+        }                              
     }
-}
