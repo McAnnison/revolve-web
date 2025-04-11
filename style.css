@@ -129,14 +129,16 @@ nav a {
 
 .products-text p{
     text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    color: #333;
 }
 
 /* Styling for product-row */
 .product-row {
     display: flex;
-    justify-content: space-around; /* Space between items */
-    align-items: flex-start; /* Align items at the top */
-    gap: 10px; /* Add spacing between products */
+    justify-content: space-around; 
+    gap: 10px; 
     margin: 20px 0;
 }
 
@@ -145,10 +147,10 @@ nav a {
 }
 
 .product img {
-    width: 90px;
+    width: 160px;
     border-radius: 50%;
     margin-bottom: 10px;
-    height: 90px;
+    height: 160px;
 }
 
 .product h3 {
