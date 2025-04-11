@@ -74,13 +74,13 @@ nav a {
     position: absolute;
     z-index: 2;
     top: 50%;
-    left: 70%;
+    left: 60%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: rgb(255, 255, 255);
     width: 100%;
     max-width: 800px;
-    padding: 20px;
+    padding: 25px;
 }
 
 .hero h2{
@@ -93,8 +93,9 @@ nav a {
 }
 
 .hero p {
-    font-family: "";
-    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    font-size: 20px;
 }
 
 .btn {
@@ -103,7 +104,7 @@ nav a {
     background-color: rgb(230, 230, 2); 
     color: rgb(15, 15, 15);
     text-decoration: none;
-    font-size: 24px;
+    font-size: 18px;
     border-radius: 5px;
     font-family: "Poppins", sans-serif;
     margin-top: 20px;
