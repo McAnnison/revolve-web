@@ -217,10 +217,10 @@ nav a {
 }
 
 .product img {
-    width: 160px;
+    width: 200px;
     border-radius: 50%;
     margin-bottom: 10px;
-    height: 160px;
+    height: 200px;
     row-gap: 2px;
 }
 
@@ -270,13 +270,14 @@ nav a {
     border-radius: 50%;
     filter: brightness(0.8);
     transition: filter 0.3s ease;
+    margin-bottom: 0;
 }
 
 
 .oriental-taste h2 {
     font-size: 2.5rem;
     color: gold;
-    margin-top: -2px;
+    margin-top: 0;
     margin-left: 800px;
     margin-bottom: 20px;
 }
@@ -298,6 +299,7 @@ nav a {
     color: #1a1a1a;
     text-decoration: none;
     font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
     margin-left: 800px;
     text-transform: uppercase;
     border-radius: 5px;
@@ -342,11 +344,12 @@ nav a {
 .statistics-section p {
     color: #ddd;
     text-align: center;
+    font-family: Arial, cursive;
 }
 .statistics-container {
     display: flex;
     justify-content: space-around;
-    margin: 30px 0;
+    margin: 0;
 }
 
 .statistic {
@@ -371,12 +374,15 @@ nav a {
     padding: 20px 0;
     text-align: center;
     position: relative;
+    flex-direction: column;
+    display: block;
+    align-items: left;
 }
 
 .chicken-grill h2 {
     font-size: 2.5rem;
     color: gold;
-    margin-left: 10px;
+    margin-right: 800px;
     margin-bottom: 20px;
 }
 
@@ -386,9 +392,10 @@ nav a {
     margin-bottom: 30px;
     line-height: 1.6;
     text-align: left;
+    font-family: Arial, cursive;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .image-container img {
         width: 200px;
@@ -446,20 +453,21 @@ nav a {
 }
 
 .about {
-    padding: 4rem 2rem;
+    padding: 20px;
     background: #f9f9f9;
     font-family: 'Arial', sans-serif;
+    width: 100%;
 }
 
 .about-content {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
 
 .about h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #000000;
     margin-bottom: 2rem;
     position: relative;
     display: inline-block;
@@ -480,7 +488,7 @@ nav a {
 .video-container {
     position: relative;
     width: 100%;
-    padding: 40px;
+    padding: 10px;
     max-width: 100%;
     margin: 0 auto 2rem;
     border-radius: 8px;
@@ -492,7 +500,7 @@ nav a {
 .video-background {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 500px;
 }
 
 .video-bg-image {
@@ -508,7 +516,7 @@ nav a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(77, 77, 3);
+    background-color: yellow;
     opacity: 0.5;
     mix-blend-mode: multiply;
 }
@@ -595,8 +603,9 @@ nav a {
 }
 
 .contact-text p {
-    color: #7f8c8d;
+    color: #464646;
     font-size: 1.1rem;
+    font-family: Arial, cursive;
     line-height: 1.6;
 }
 
@@ -616,7 +625,7 @@ input, textarea {
 
 input:focus, textarea:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #000000;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
@@ -627,11 +636,12 @@ textarea {
 
 button {
     background-color: gold;
-    color: white;
+    color: rgb(12, 12, 12);
     padding: 15px 25px;
     border: none;
     border-radius: 6px;
     font-size: 1rem;
+    font-family: "Poppins", sans-serif, cursive;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
