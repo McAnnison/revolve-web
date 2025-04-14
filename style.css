@@ -113,7 +113,7 @@ nav a {
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: gold(230, 230, 2); 
+    background-color: gold; 
     color: rgb(15, 15, 15);
     text-decoration: none;
     font-size: 18px;
@@ -325,6 +325,17 @@ nav a {
     margin-left: 40px;    
 }
 
+.statistics-section h2 {
+    font-size: 2.5rem;
+    color: gold;
+    margin-left: 300px;
+    margin-bottom: 20px;
+}
+
+.statistics-section p {
+    color: #ddd;
+    text-align: center;
+}
 .statistics-container {
     display: flex;
     justify-content: space-around;
@@ -340,7 +351,7 @@ nav a {
 
 .statistic h3 {
     font-size: 2.5rem;
-    color: #f5c518; /* Yellow for numbers */
+    color: #f5c518; 
     margin-bottom: 10px;
 }
 
@@ -354,9 +365,6 @@ nav a {
     text-align: center;
     position: relative;
 }
-
-
-
 
 .chicken-grill h2 {
     font-size: 2.5rem;
@@ -393,7 +401,7 @@ nav a {
         padding: 10px 20px;
     }
 }
-/* Optional overlay to improve text readability */
+
 .content::after {
     content: '';
     position: absolute;
@@ -461,7 +469,7 @@ nav a {
     background: #ffcc00;
 }
 
-/* Video Container */
+
 .video-container {
     position: relative;
     width: 100%;
@@ -473,7 +481,7 @@ nav a {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Background with yellow overlay */
+
 .video-background {
     position: relative;
     width: 100%;
@@ -640,6 +648,7 @@ footer {
     background-color: #1e1e1f;
     color: #ecf0f1;
     padding: 40px 20px;
+    font-family: "Poppins", sans-serif;
     text-align: center;
 }
 .footer-container {
