@@ -82,8 +82,9 @@ nav a {
     font-family: "Poppins", sans-serif;
 }
 
-.nav a:hover {
+nav a:hover {
     color: gold;
+    text-decoration: underline;
 }
 
 .hero {
@@ -414,8 +415,28 @@ nav a {
     .button {
         padding: 10px 20px;
     }
-}
 
+    .statistics-section {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .statistics-section h2 {
+        font-size: 2rem;
+        margin-left: 0;
+    }
+
+    .statistics-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .oriental-taste h2, .button{
+        padding: 20px;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
 .content::after {
     content: '';
     position: absolute;
@@ -584,7 +605,8 @@ nav a {
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
-    top: 12px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding: 20px 10px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -613,6 +635,14 @@ form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-family: "Arial", sans-serif;
+}
+
+::placeholder {
+    color: #aaa;
+    font-style: italic;
+    font-family: "Arial", sans-serif;
+    font-size: 1rem;
 }
 
 input, textarea {
@@ -686,6 +716,8 @@ h3 {
 }
 p {
     line-height: 1.5;
+    font-size: 1rem;
+    font-family: "poppins", sans-serif,cursive;
 }
 .footer-links ul {
     list-style: none;
@@ -698,6 +730,7 @@ p {
     color: #ecf0f1;
     text-decoration: none;
     transition: color 0.3s;
+    font-family: "Poppins", sans-serif, cursive;
 }
 .footer-links a:hover {
     color: #ffcc00;
