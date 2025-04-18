@@ -80,6 +80,52 @@ header {
     object-fit: cover;
 }
 
+/* Default nav styles (desktop) */
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+/* Mobile menu styles */
+@media (max-width: 800px) {
+    nav ul {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 998;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        position: relative;
+        z-index: 999;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+    }
+}
+
+/* Desktop - hide mobile button */
+@media (min-width: 801px) {
+    .mobile-menu-btn {
+        display: none;
+    }
+}
+
 nav ul {
     display: flex;
     gap: 20px;

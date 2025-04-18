@@ -10,57 +10,61 @@ document.addEventListener('DOMContentLoaded', function() {
         };
     };
 
-    // Mobile menu toggle functionality with enhanced accessibility
-    const mobileMenuToggle = function() {
-        const menuBtn = document.createElement('button');
-        menuBtn.className = 'mobile-menu-btn';
-        menuBtn.setAttribute('aria-label', 'Toggle navigation menu');
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.innerHTML = '☰';
-        
-        const nav = document.querySelector('nav ul');
-        const headerContent = document.querySelector('.header-content');
-        
-        // Create and insert the mobile menu button
-        headerContent.insertBefore(menuBtn, nav.parentNode);
-        
-        const toggleMenu = function() {
-            const isOpen = nav.classList.toggle('active');
-            menuBtn.innerHTML = isOpen ? '✕' : '☰';
-            menuBtn.setAttribute('aria-expanded', isOpen);
-            
-            // Toggle body scroll when menu is open
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-            
-            // Focus management for accessibility
-            if (isOpen) {
-                const firstLink = nav.querySelector('a');
-                if (firstLink) firstLink.focus();
-            }
-        };
-        
-        menuBtn.addEventListener('click', toggleMenu);
-        
-        // Close menu when clicking on a link or pressing Escape
-        const closeMenu = function() {
-            if (window.innerWidth <= 800 && nav.classList.contains('active')) {
+// Mobile menu functionality
+const initMobileMenu = () => {
+    const menuBtn = document.createElement('button');
+    menuBtn.className = 'mobile-menu-btn';
+    menuBtn.innerHTML = '☰';
+    menuBtn.setAttribute('aria-label', 'Toggle menu');
+    
+    const nav = document.querySelector('nav ul');
+    const headerContent = document.querySelector('.header-content');
+    
+    // Insert mobile menu button
+    headerContent.insertBefore(menuBtn, nav.parentNode);
+    
+    // Toggle menu function
+    const toggleMenu = () => {
+        const isOpen = nav.classList.toggle('active');
+        menuBtn.innerHTML = isOpen ? '✕' : '☰';
+        menuBtn.setAttribute('aria-expanded', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+    
+    // Event listeners
+    menuBtn.addEventListener('click', toggleMenu);
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 800) {
                 nav.classList.remove('active');
                 menuBtn.innerHTML = '☰';
                 menuBtn.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
-                menuBtn.focus();
             }
-        };
-        
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
         });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeMenu();
-        });
-    };
+    });
+};
+
+// Initialize mobile menu only on mobile
+if (window.innerWidth <= 800) {
+    initMobileMenu();
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const nav = document.querySelector('nav ul');
+    
+    if (window.innerWidth <= 800 && !menuBtn) {
+        initMobileMenu();
+    } else if (window.innerWidth > 800 && menuBtn) {
+        nav.classList.remove('active');
+        menuBtn.remove();
+        document.body.style.overflow = '';
+    }
+});
 
     // Responsive initialization with throttling
     const initResponsiveFeatures = debounce(function() {
