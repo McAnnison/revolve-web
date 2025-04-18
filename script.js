@@ -45,7 +45,7 @@ const initMobileMenu = () => {
             }
         });
     });
-};
+}; 
 
 // Initialize mobile menu only on mobile
 if (window.innerWidth <= 800) {

@@ -310,6 +310,18 @@ nav a:hover {
     position: relative;
 }
 
+@media screen and (max-width: 768px) {
+    .container .img {
+      width: auto;
+      height: auto;
+    }
+    .container .img2 {
+      width: auto;
+      height: auto;
+    }
+    
+}
+
 .container img {
     width: 250px;
     height: 250px;
@@ -322,9 +334,9 @@ nav a:hover {
 }
 
 .container .img2{
-    width: 180px;
-    height: 180px;
-    margin-left: 12px;
+    width: 200px;
+    height: 200px;
+    margin-left: 700px;
     border-radius: 50%;
     filter: brightness(0.8);
     transition: filter 0.3s ease;
@@ -363,6 +375,7 @@ nav a:hover {
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
+
 .button2 {
     display: inline-block;
     padding: 15px 30px;
@@ -370,7 +383,8 @@ nav a:hover {
     color: #1a1a1a;
     text-decoration: none;
     font-weight: bold;
-    margin-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0;
     text-transform: uppercase;
     border-radius: 5px;
     transition: background-color 0.3s ease;
@@ -389,7 +403,8 @@ nav a:hover {
     padding: 30px ;
     border-radius: 10px;
     width: 900px;
-    margin-left: 40px;    
+    left: 50%;
+    right: 50%;   
 }
 
 .statistics-section h2 {
