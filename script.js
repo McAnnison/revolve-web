@@ -1,8 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle functionality
+    // Debounce function to limit how often a function can fire
+    const debounce = (func, delay) => {
+        let timeoutId;
+        return function() {
+            const context = this;
+            const args = arguments;
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(context, args), delay);
+        };
+    };
+
+    // Mobile menu toggle functionality with enhanced accessibility
     const mobileMenuToggle = function() {
         const menuBtn = document.createElement('button');
         menuBtn.className = 'mobile-menu-btn';
+        menuBtn.setAttribute('aria-label', 'Toggle navigation menu');
+        menuBtn.setAttribute('aria-expanded', 'false');
         menuBtn.innerHTML = '☰';
         
         const nav = document.querySelector('nav ul');
@@ -11,60 +24,102 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create and insert the mobile menu button
         headerContent.insertBefore(menuBtn, nav.parentNode);
         
-        menuBtn.addEventListener('click', function() {
-            nav.classList.toggle('active');
-            menuBtn.innerHTML = nav.classList.contains('active') ? '✕' : '☰';
-        });
+        const toggleMenu = function() {
+            const isOpen = nav.classList.toggle('active');
+            menuBtn.innerHTML = isOpen ? '✕' : '☰';
+            menuBtn.setAttribute('aria-expanded', isOpen);
+            
+            // Toggle body scroll when menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            
+            // Focus management for accessibility
+            if (isOpen) {
+                const firstLink = nav.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
+        };
         
-        // Close menu when clicking on a link
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        // Close menu when clicking on a link or pressing Escape
+        const closeMenu = function() {
+            if (window.innerWidth <= 800 && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                menuBtn.innerHTML = '☰';
+                menuBtn.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+                menuBtn.focus();
+            }
+        };
+        
         const navLinks = document.querySelectorAll('nav a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 800) {
-                    nav.classList.remove('active');
-                    menuBtn.innerHTML = '☰';
-                }
-            });
+            link.addEventListener('click', closeMenu);
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMenu();
         });
     };
-    
-    // Check screen width and initialize mobile menu if needed
-    if (window.innerWidth <= 800) {
-        mobileMenuToggle();
-    }
-    
-    // Re-check on window resize
-    window.addEventListener('resize', function() {
+
+    // Responsive initialization with throttling
+    const initResponsiveFeatures = debounce(function() {
         const menuBtn = document.querySelector('.mobile-menu-btn');
         
-        if (window.innerWidth <= 800 && !menuBtn) {
-            mobileMenuToggle();
-        } else if (window.innerWidth > 800 && menuBtn) {
-            const nav = document.querySelector('nav ul');
-            nav.classList.remove('active');
-            menuBtn.remove();
+        if (window.innerWidth <= 800) {
+            if (!menuBtn) mobileMenuToggle();
+        } else {
+            if (menuBtn) {
+                const nav = document.querySelector('nav ul');
+                nav.classList.remove('active');
+                menuBtn.remove();
+                document.body.style.overflow = '';
+            }
         }
-    });
+        
+        // Call all responsive adjustment functions
+        adjustHeroPosition();
+        handleProductLayout();
+        adjustStatistics();
+        adjustOrientalTaste();
+        adjustChickenGrill();
+    }, 100);
+
+    // Initialize responsive features on load
+    initResponsiveFeatures();
     
-    // Smooth scrolling for anchor links
+    // Re-check on window resize with debounce
+    window.addEventListener('resize', initResponsiveFeatures);
+    
+    // Enhanced smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
             const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
+            if (targetId === '#' || targetId === '#!') return;
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                e.preventDefault();
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+                const offsetPosition = targetPosition - headerHeight;
+                
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
+                
+                // Update URL without jumping
+                if (history.pushState) {
+                    history.pushState(null, null, targetId);
+                } else {
+                    location.hash = targetId;
+                }
             }
         });
     });
     
-    // Adjust hero position on mobile
+    // Responsive adjustment functions
     const adjustHeroPosition = function() {
         const hero = document.querySelector('.hero');
         if (!hero) return;
@@ -73,17 +128,15 @@ document.addEventListener('DOMContentLoaded', function() {
             hero.style.left = '50%';
             hero.style.transform = 'translate(-50%, -50%)';
             hero.style.width = '90%';
+            hero.style.textAlign = 'center';
         } else {
             hero.style.left = '60%';
             hero.style.transform = 'translate(-50%, -50%)';
             hero.style.width = '';
+            hero.style.textAlign = '';
         }
     };
     
-    adjustHeroPosition();
-    window.addEventListener('resize', adjustHeroPosition);
-    
-    // Handle product row layout on mobile
     const handleProductLayout = function() {
         const productRow = document.querySelector('.product-row');
         if (!productRow) return;
@@ -99,10 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    handleProductLayout();
-    window.addEventListener('resize', handleProductLayout);
-    
-    // Adjust statistics section on mobile
     const adjustStatistics = function() {
         const statsSection = document.querySelector('.statistics-section');
         if (!statsSection) return;
@@ -142,10 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    adjustStatistics();
-    window.addEventListener('resize', adjustStatistics);
-    
-    // Adjust oriental taste section on mobile
     const adjustOrientalTaste = function() {
         const orientalSection = document.querySelector('.oriental-taste');
         if (!orientalSection) return;
@@ -190,10 +235,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    adjustOrientalTaste();
-    window.addEventListener('resize', adjustOrientalTaste);
-    
-    // Adjust chicken grill section on mobile
     const adjustChickenGrill = function() {
         const chickenGrill = document.querySelector('.chicken-grill');
         if (!chickenGrill) return;
@@ -238,29 +279,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    adjustChickenGrill();
-    window.addEventListener('resize', adjustChickenGrill);
-    
-    // Add animation to elements when they come into view
+    // Enhanced intersection observer for animations
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.product, .oriental-taste, .statistics-section, .chicken-grill, .about-content, .contact-form');
+        const elements = document.querySelectorAll(
+            '.product, .oriental-taste, .statistics-section, ' +
+            '.chicken-grill, .about-content, .contact-form'
+        );
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
+        });
         
         elements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            el.classList.add('animate-ready');
             observer.observe(el);
         });
     };
     
+    // Initialize animations
     animateOnScroll();
+    
+    // Add touch detection for hover effects
+    document.body.addEventListener('touchstart', function() {}, false);
 });

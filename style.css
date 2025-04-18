@@ -1,13 +1,24 @@
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Dancing Script", cursive;    
     scroll-behavior: smooth;
+    animation: flyIn 1s ease-in-out;
     animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes flyIn {
     from {
         opacity: 0;
         transform: translateY(20px);
