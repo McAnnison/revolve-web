@@ -391,10 +391,10 @@ nav a:hover {
 }
 
 .button:hover {
-    background-color: #e0b015;
+    background-color:  rgb(117, 117, 2);
 }
 .button2:hover {
-    background-color: #e0b015;
+    background-color:  rgb(117, 117, 2);
 }
 
 /* Statistics Section */
@@ -609,7 +609,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: yellow;
+    background-color:goldenrod;
     opacity: 0.5;
     mix-blend-mode: multiply;
 }

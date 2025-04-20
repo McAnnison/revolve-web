@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('/assets/back2.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .form-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-container input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: gold;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .form-container {
+            width: 90%;
+            padding: 15px;
+            }
+
+            .form-container input {
+            width: 100% auto;
+            }
+
+            .form-container h2 {
+            font-size: 1.5em;
+            }
+
+            .form-container button {
+            padding: 8px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-container h2 {
+            font-size: 1.2em;
+            }
+
+            .form-container {
+            padding: 10px;
+            }
+
+            .form-container button {
+            padding: 6px 10px;
+            font-size: 0.9em;
+            }
+        }
+        .form-container button:hover {
+            background-color:  rgb(117, 117, 2);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Order Your Food</h2>
+        <form>
+            <input type="number" placeholder="Number of Fried Rice" min="0" required aria-label="Number of Fried Rice">
+            <input type="number" placeholder="Number of Fufu" min="0" required aria-label="Number of Fufu">
+            <input type="number" placeholder="Number of Grilled Chicken" min="0" required aria-label="Number of Grilled Chicken">
+            <input type="text" placeholder="Your Contact" required aria-label="Your Contact">
+            <input type="text" placeholder="Your Location" required aria-label="Your Location">
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2023 Food Order Service
+    </footer>
+</body>
+</html>
