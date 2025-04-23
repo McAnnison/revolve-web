@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Get DOM elements
+
   const hamburger = document.querySelector('.hamburger');
   const sidebar = document.querySelector('.sidebar');
   const sidebarLinks = document.querySelectorAll('.sidebar-links a');
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
   
-  // Close sidebar when clicking outside of it
+ 
   document.addEventListener('click', (e) => {
       if (window.innerWidth <= 800 && 
           sidebar.classList.contains('active') && 
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
   });
   
-  // Update navigation based on scroll position
+  
   window.addEventListener('scroll', function() {
       const scrollPosition = window.scrollY;
       
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
   
-  // Add animation to elements when they come into view
+  
   const animateOnScroll = function() {
       const elements = document.querySelectorAll('.product, .statistic, .contact-form');
       
@@ -94,5 +94,5 @@ document.addEventListener('DOMContentLoaded', function() {
   };
   
   window.addEventListener('scroll', animateOnScroll);
-  animateOnScroll(); // Run once on page load
+  animateOnScroll(); 
 });

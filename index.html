@@ -12,7 +12,7 @@
 <body>
 
     <header>
-        <div class="header-content">
+        <div class="header-content" >
             <div class="logo">
                 <img src="assets/logo1.png" alt=" Logo">
                 Big DOT
@@ -20,11 +20,11 @@
 
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Promo</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#promo">Promo</a></li>
+                    <li><a href="#product">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav> 
 
@@ -36,11 +36,11 @@
 
             <div class="sidebar">
                 <ul class="sidebar-links">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Promo</a></li>
-                    <li><a href="">Products</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Contact</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#promo">Promo</a></li>
+                    <li><a href="#product">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -49,7 +49,7 @@
             <img src="assets/back2.png" alt="Header Image">
         </div>
         
-        <div class="hero">
+        <div class="hero" id="home">
             <h2>Big DOT</h2>
             <p>Welcome to Big Dot where bold flavors meet elegance.</p>
             <a href="order.html" class="btn">Order Now</a>
@@ -57,7 +57,7 @@
     </header>
 
 
-    <section class="products"> 
+    <section class="products" id="product"> 
         <div class="products-text">
         <h2>Best Seller</h2>
         <p>Our crowd favourites that keep customers coming back- discover
@@ -77,21 +77,22 @@
             </div>
             <div class="product">
                 <img src="assets/Vegetable Fried Rice - Indian style.jpeg" alt="Product 3">
-                <h3>Fried rice with grilled chicken 3</h3>
-                <p>This dish is flavorful, hearty meal that's sure to satisfy any cravbing.</p>
+                <h3>Fried rice with grilled chicken </h3>
+                <p>This dish is flavorful, hearty meal that's sure to satisfy any craving.</p>
             </div>
         </div>
     </section>
 
-    <div class="container">
+    <section id="promo">
+    <div class="container" >
         <img src="assets/chicken.jpeg" alt="Oriental Taste" />
         <div class="oriental-taste">            
             <h2>Oriental Taste</h2>
             <p>Our restaurant offers a curated menu with category-oriented tastes, ensuring unique and satisfying dishes for every preference.</p>
-            <a href="#" class="button">ORDER NOW</a>
+            <a href="order.html" class="button">Order Now</a>
         </div>
     
-        <div class="statistics-section">
+        <div class="statistics-section" >
             <h2>Statistics</h2>
             <p>75% of customers prefer ordering food online rather than dining in, with an average 60% of sales in the past year from delivery and takeout services.</p>
             <div class="statistics-container">
@@ -116,13 +117,15 @@
     
         <div class="chicken-grill">
             <h2>Chicken Grill</h2>            
-                <p>Indulge in our mouthwatering Chicken Grill, perfectly seasoned and grilled to perfection for a smoky, savory experience in every bite.</p>
-            <a href="#" class="button2">ORDER NOW</a>           
+            <p>Indulge in our mouthwatering Chicken Grill, perfectly seasoned and grilled to perfection for a smoky, savory experience in every bite.</p>
+            <a href="order.html" class="button2">Order Now</a>          
         </div>
-        <img src="assets/chicken.jpeg" alt="Chicken Grill" class="img2"/>
-    </div>
+        <img src="assets/chicken.jpeg" alt="Chicken Grill" class="img2"/> 
 
-    <section class="about">
+    </div>
+</section>
+
+    <section class="about" id="about">
         <div class="about-content">
             <h2>About Us</h2>
             
@@ -161,7 +164,7 @@
     </section>
 
 
-    <section class="contact-form">
+    <section class="contact-form" id="contact">
         <div class="contact-text">
             <h2>Contact Us</h2>
             <p>We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
@@ -185,7 +188,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Promo</a></li>
+                        <li><a href="#promo">Promo</a></li>
                         <li><a href="#products">Products</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
