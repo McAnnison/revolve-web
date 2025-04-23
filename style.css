@@ -636,7 +636,7 @@ html {
 /* Mobile layout */
 @media (max-width: 800px) {
     .about-image {
-        width: 100%;
+        width: 20%;
         margin-bottom: 20px;
         border-radius: 50%;
     }
