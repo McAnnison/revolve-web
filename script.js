@@ -1,22 +1,98 @@
-const hambuger = document.querySelector('.hamburger');
-const sidebar =  document.querySelector('sidebar');
-const navLinks =  document.querySelector('.navLinks');
-
-hambuger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  sidebar.classList.toggle('active');
-});
-
-document.addEventListener('click', (e) => {
-  if (!hamburger.contains(e.target) && !sidebar.contains(e.target)) {
-    hamburger.classList.remove('active');
-    sidebar.classList.remove('active');
+document.addEventListener('DOMContentLoaded', function() {
+  // Get DOM elements
+  const hamburger = document.querySelector('.hamburger');
+  const sidebar = document.querySelector('.sidebar');
+  const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  // Function to toggle sidebar
+  function toggleSidebar() {
+      hamburger.classList.toggle('active');
+      sidebar.classList.toggle('active');
+      
+      // Toggle body overflow to prevent scrolling when sidebar is open
+      if (sidebar.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+      } else {
+          document.body.style.overflow = '';
+      }
   }
-});
-
-document.querySelectorAll('.sidebar-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    hambuger.classList.remove('active');
-    sidebar.classList.remove('active');
+  
+  // Hamburger click event
+  hamburger.addEventListener('click', toggleSidebar);
+  
+  // Close sidebar when a link is clicked (for mobile)
+  sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          if (window.innerWidth <= 800) {
+              toggleSidebar();
+          }
+      });
   });
+  
+  // Smooth scrolling for all navigation links
+  navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+              window.scrollTo({
+                  top: targetElement.offsetTop - 100,
+                  behavior: 'smooth'
+              });
+          }
+      });
+  });
+  
+  // Close sidebar when clicking outside of it
+  document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 800 && 
+          sidebar.classList.contains('active') && 
+          !sidebar.contains(e.target) && 
+          !hamburger.contains(e.target)) {
+          toggleSidebar();
+      }
+  });
+  
+  // Update navigation based on scroll position
+  window.addEventListener('scroll', function() {
+      const scrollPosition = window.scrollY;
+      
+      navLinks.forEach(link => {
+          const sectionId = link.getAttribute('href');
+          if (sectionId === '#') return;
+          
+          const section = document.querySelector(sectionId);
+          if (section) {
+              const sectionTop = section.offsetTop - 150;
+              const sectionBottom = sectionTop + section.offsetHeight;
+              
+              if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                  link.classList.add('active');
+              } else {
+                  link.classList.remove('active');
+              }
+          }
+      });
+  });
+  
+  // Add animation to elements when they come into view
+  const animateOnScroll = function() {
+      const elements = document.querySelectorAll('.product, .statistic, .contact-form');
+      
+      elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+          
+          if (elementPosition < screenPosition) {
+              element.style.animation = 'fadeIn 1s ease-in-out forwards';
+          }
+      });
+  };
+  
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Run once on page load
 });
