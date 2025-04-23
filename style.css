@@ -585,7 +585,7 @@ html {
 .about-item {
     margin: 40px 0;
     display: flex;
-    gap: 10px;
+    gap: 0px;
     flex-direction: column;
 }
 
