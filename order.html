@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Dancing Script', cursive;
             background: url('assets/back2.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
@@ -76,57 +76,76 @@
             font-size: 0.9em;
             }
         }
-        .form-container button:hover {
-            background-color:  rgb(117, 117, 2);
-        }
 
-        footer {
+.form-container button:hover {
+            background-color:  rgb(117, 117, 2);
+}
+
+footer {
     background-color: #1e1e1f;
     color: #ecf0f1;
-    padding: 40px 20px;
-   font-family: "Poppins", sans-serif;
-    text-align: center;
+    padding: 60px 20px 20px;
+    font-family: "Poppins", sans-serif;
 }
+
 .footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    gap: 40px;
 }
+
 .footer-about, .footer-links {
     flex: 1;
     min-width: 250px;
-    margin: 20px;
 }
-h3 {
-    color: #ffcc00;
-    margin-bottom: 15px;
+
+.footer-about h3 {
+    color: gold;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
 }
-p {
-    line-height: 1.5;
-    font-size: 1rem;
-    font-family: "poppins", sans-serif,cursive;
+
+.footer-about p {
+    line-height: 1.6;
+    color: #ccc;
 }
+
+.footer-links h3 {
+    color: gold;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
 .footer-links ul {
     list-style: none;
     padding: 0;
 }
+
 .footer-links li {
-    margin: 10px 0;
+    margin: 15px 0;
 }
+
 .footer-links a {
     color: #ecf0f1;
     text-decoration: none;
     transition: color 0.3s;
-    font-family: "Poppins", sans-serif, cursive;
+    font-size: 1rem;
 }
+
 .footer-links a:hover {
-    color: #ffcc00;
+    color: gold;
 }
+
 .footer-bottom {
     margin-top: 40px;
-    font-size: 14px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #999;
+    font-size: 0.9rem;
 }
 
     </style>
@@ -140,7 +159,8 @@ p {
             <input type="number" placeholder="Number of Grilled Chicken" min="0" required aria-label="Number of Grilled Chicken">
             <input type="text" placeholder="Your Contact" required aria-label="Your Contact">
             <input type="text" placeholder="Your Location" required aria-label="Your Location">
-            <button type="submit">Place Order</button>
+            <h3 class="cost">Total cost</h3>
+            <button type="submit">Place Order</button> 
         </form>
     </div>
     <footer>
@@ -153,11 +173,7 @@ p {
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#promo">Promo</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
                 </ul>
             </div>
         </div>
@@ -165,5 +181,52 @@ p {
             <p>&copy; 2025 Big DOT. All rights reserved.</p>
         </div>
     </footer>  
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+   
+    const prices = {
+        friedRice: 40,    
+        fufu: 65,        
+        grilledChicken: 35 
+    };
+
+   
+    const form = document.querySelector('form');
+    const friedRiceInput = form.querySelector('input[aria-label="Number of Fried Rice"]');
+    const fufuInput = form.querySelector('input[aria-label="Number of Fufu"]');
+    const grilledChickenInput = form.querySelector('input[aria-label="Number of Grilled Chicken"]');
+    const totalCostDisplay = form.querySelector('.cost');
+
+    // Function to calculate total cost
+    function calculateTotal() {
+        const friedRiceQty = parseInt(friedRiceInput.value) || 0;
+        const fufuQty = parseInt(fufuInput.value) || 0;
+        const grilledChickenQty = parseInt(grilledChickenInput.value) || 0;
+
+        const total = (friedRiceQty * prices.friedRice) + 
+                     (fufuQty * prices.fufu) + 
+                     (grilledChickenQty * prices.grilledChicken);
+
+        totalCostDisplay.textContent = `Total cost: ${total} Ghs`;
+    }
+
+    // Add event listeners to all quantity inputs
+    [friedRiceInput, fufuInput, grilledChickenInput].forEach(input => {
+        input.addEventListener('input', calculateTotal);
+    });
+
+    // Calculate initial total (in case of default values)
+    calculateTotal();
+
+    // Form submission handler
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Order placed successfully! Total: ' + totalCostDisplay.textContent);
+        // Here you would typically send the data to a server
+    });
+});
+    </script>
 </body>
 </html>
