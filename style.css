@@ -894,3 +894,21 @@ footer {
     color: #999;
     font-size: 0.9rem;
 }
+
+.footer-download {
+    margin-top: 20px;
+    line-height: 2rem;
+}
+
+.footer-download .download-link {
+    color: #000000;
+    font-family: "poppins", sans-serif, cursive;
+    background-color: gold;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.footer-download .download-link:hover {
+    background-color: rgb(122, 104, 1);
+}
