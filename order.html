@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Order</title>
     <style>
+        @keyframes rollInFromBelow {
+            from {
+                opacity: 0;
+                transform: translateY(100vh);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -12,6 +23,8 @@
             background: url('assets/back2.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            animation: rollInFromBelow 0.8s ease-out;
+            overflow-x: hidden;
         }
 
         .form-container {
