@@ -92,7 +92,80 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       });
   };
+
+  const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateCountUp(numberEl, targetValue, durationMs) {
+      if (!numberEl || !Number.isFinite(targetValue)) return;
+      if (prefersReducedMotion) {
+          numberEl.textContent = String(targetValue);
+          return;
+      }
+
+      const startValue = 0;
+      const startTime = performance.now();
+      const duration = Math.max(200, durationMs || 1200);
+
+      function tick(now) {
+          const elapsed = now - startTime;
+          const t = Math.min(1, elapsed / duration);
+          // easeOutCubic
+          const eased = 1 - Math.pow(1 - t, 3);
+          const currentValue = Math.round(startValue + (targetValue - startValue) * eased);
+          numberEl.textContent = String(currentValue);
+          if (t < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+  }
+
+  function initPromoCounters() {
+      const counters = document.querySelectorAll('.count-up[data-target]');
+      if (!counters.length) return;
+
+      const run = () => {
+          counters.forEach(counter => {
+              if (counter.dataset.animated === 'true') return;
+              const target = Number.parseInt(counter.dataset.target || '0', 10);
+              counter.dataset.animated = 'true';
+              animateCountUp(counter, Number.isFinite(target) ? target : 0, 1500);
+          });
+      };
+
+      // Prefer IntersectionObserver for smoother + cheaper scroll triggers.
+      if ('IntersectionObserver' in window) {
+          const section = document.querySelector('.statistics-section') || counters[0].closest('.statistics-section');
+          const observer = new IntersectionObserver((entries) => {
+              const entry = entries[0];
+              if (entry && entry.isIntersecting) {
+                  run();
+                  observer.disconnect();
+              }
+          }, { threshold: 0.35 });
+
+          if (section) observer.observe(section);
+          else run();
+      } else {
+          // Fallback: trigger on first scroll/paint.
+          let hasRun = false;
+          const onScroll = () => {
+              if (hasRun) return;
+              const first = counters[0];
+              if (!first) return;
+              const rect = first.getBoundingClientRect();
+              if (rect.top < window.innerHeight * 0.8) {
+                  hasRun = true;
+                  run();
+                  window.removeEventListener('scroll', onScroll);
+              }
+          };
+          window.addEventListener('scroll', onScroll);
+          onScroll();
+      }
+  }
   
   window.addEventListener('scroll', animateOnScroll);
   animateOnScroll(); 
+
+    initPromoCounters();
 });

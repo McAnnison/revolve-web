@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css"/> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <div class="header-content" >
             <div class="logo">
-                <img src="assets/logo1.png" alt=" Logo">
+                <img src="assets/logo1.png" alt=" Logo" decoding="async">
                 Big DOT
             </div>
 
@@ -28,13 +28,13 @@
                 </ul>
             </nav> 
 
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="line"></div>
-            </div>
+            </button>
 
-            <div class="sidebar">
+            <div class="sidebar" id="mobile-menu" aria-hidden="true">
                 <ul class="sidebar-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#promo">Promo</a></li>
@@ -46,7 +46,7 @@
         </div>
         
         <div class="background-image">
-            <img src="assets/back2.png" alt="Header Image">
+            <img src="assets/back2.png" alt="Header Image" decoding="async">
         </div>
         
         <div class="hero" id="home">
@@ -66,17 +66,17 @@
     </div>
         <div class="product-row">
             <div class="product">
-                <img src="assets/fufu.png" alt="Product 1">
+                <img src="assets/fufu.png" alt="Fufu with light soup" loading="lazy" decoding="async">
                 <h3>Fufu with light soup</h3>
                 <p>Perfectly paired with tender goat or chicken</p>
             </div>
             <div class="product">
-                <img src="assets/Waakye.jpeg" alt="Product 2">
+                <img src="assets/Waakye.jpeg" alt="Waakye with fried Fish" loading="lazy" decoding="async">
                 <h3>Waakye with fried Fish</h3>
                 <p>Every bite is packed with authentic flavors</p>
             </div>
             <div class="product">
-                <img src="assets/Vegetable Fried Rice - Indian style.jpeg" alt="Product 3">
+                <img src="assets/Vegetable Fried Rice - Indian style.jpeg" alt="Fried rice with grilled chicken" loading="lazy" decoding="async">
                 <h3>Fried rice with grilled chicken </h3>
                 <p>This dish is flavorful, hearty meal that's sure to satisfy any craving.</p>
             </div>
@@ -85,7 +85,7 @@
 
     <section id="promo">
     <div class="container" >
-        <img src="assets/chicken.jpeg" alt="Oriental Taste" />
+        <img src="assets/chicken.jpeg" alt="Oriental Taste" loading="lazy" decoding="async" />
         <div class="oriental-taste">            
             <h2>Oriental Taste</h2>
             <p>Our restaurant offers a curated menu with category-oriented tastes, ensuring unique and satisfying dishes for every preference.</p>
@@ -97,19 +97,19 @@
             <p>75% of customers prefer ordering food online rather than dining in, with an average 60% of sales in the past year from delivery and takeout services.</p>
             <div class="statistics-container">
                 <div class="statistic">
-                    <h3>123</h3>
+                    <h3 class="count-up" data-target="123">0</h3>
                     <p>Outlets</p>
                 </div>
                 <div class="statistic">
-                    <h3>100</h3>
+                    <h3 class="count-up" data-target="100">0</h3>
                     <p>Chefs</p>
                 </div>
                 <div class="statistic">
-                    <h3>300</h3>
+                    <h3 class="count-up" data-target="300">0</h3>
                     <p>Menu</p>
                 </div>
                 <div class="statistic">
-                    <h3>30</h3>
+                    <h3 class="count-up" data-target="30">0</h3>
                     <p>Countries</p>
                 </div>
             </div>
@@ -120,7 +120,7 @@
             <p>Indulge in our mouthwatering Chicken Grill, perfectly seasoned and grilled to perfection for a smoky, savory experience in every bite.</p>
             <a href="order.html" class="button2">Order Now</a>          
         </div>
-        <img src="assets/chicken.jpeg" alt="Chicken Grill" class="img2"/> 
+        <img src="assets/chicken.jpeg" alt="Chicken Grill" class="img2" loading="lazy" decoding="async"/> 
 
     </div>
 </section>
@@ -130,17 +130,17 @@
             <h2>About Us</h2>
             
             <div class="about-item">
-                <img src="assets/imgae.jpeg" alt="About Us" class="about-image">
+                <img src="assets/imgae.jpeg" alt="About Us" class="about-image" loading="lazy" decoding="async">
                 <p>At Big DOT, we are passionate about bringing you the freshest and most delicious food. Our commitment to quality and sustainability sets us apart.</p>
             </div>
             
             <div class="about-item">
-                <img src="assets/farm.jpeg" alt="About Us" class="about-image">
+                <img src="assets/farm.jpeg" alt="Local farm" class="about-image" loading="lazy" decoding="async">
                 <p>We source our ingredients from local farmers and producers, ensuring that every bite is not only tasty but also supports our community.</p>
             </div>
             
             <div class="about-item">
-                <img src="assets/join.png" alt="About Us" class="about-image">
+                <img src="assets/join.png" alt="Join us" class="about-image" loading="lazy" decoding="async">
                 <p>Join us on our journey to promote healthy eating and a sustainable lifestyle. Together, we can make a difference.</p>
             </div>
         </div>          
@@ -149,7 +149,7 @@
     <section class="video-section">
             <div class="video-container">                
                 <div class="video-background">
-                    <img src="assets/below1.jpeg" alt="Video background" class="video-bg-image">
+                    <img src="assets/below1.jpeg" alt="Video background" class="video-bg-image" loading="lazy" decoding="async">
                     <div class="yellow-overlay"></div>
                 </div>                
                 
@@ -158,6 +158,7 @@
                             title="YouTube video player" frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
+                            loading="lazy"
                             allowfullscreen></iframe>
                 </div>
             </div>
@@ -169,10 +170,10 @@
             <h2>Contact Us</h2>
             <p>We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
         </div>
-        <form action="#" method="post">
+        <form action="#" method="post" data-mailto="mensahanni98@gmail.com">
             <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
-            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <textarea name="message" rows="5" placeholder="Your Message" aria-label="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>
     </section>
@@ -192,7 +193,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#promo">Promo</a></li>
-                <li><a href="#products">Products</a></li>
+                <li><a href="#product">Products</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>

@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Order</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         @keyframes rollInFromBelow {
-            from {
+            0% {
                 opacity: 0;
-                transform: translateY(100vh);
+                transform: translateY(70px);
             }
-            to {
+            70% {
+                opacity: 1;
+                transform: translateY(-8px);
+            }
+            100% {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            body {
+                animation: none !important;
             }
         }
 
@@ -23,76 +37,280 @@
             background: url('assets/back2.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
-            animation: rollInFromBelow 0.8s ease-out;
+            animation: rollInFromBelow 0.95s cubic-bezier(0.22, 1, 0.36, 1);
             overflow-x: hidden;
         }
 
-        .form-container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            border-radius: 10px;
-            width: 300px;
-            margin: 50px auto;
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 16px 20px;
+        }
+
+        .page-title {
             text-align: center;
+            margin: 0 0 18px;
+            color: gold;
+            font-size: 2.4rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
         }
 
-        .form-container h2 {
-            margin-bottom: 20px;
+        .page-subtitle {
+            text-align: center;
+            margin: 0 0 26px;
+            font-family: "Poppins", sans-serif;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
 
-        .form-container input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
+        .layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(14px) saturate(140%);
+            -webkit-backdrop-filter: blur(14px) saturate(140%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .panel h2 {
+            margin: 0 0 10px;
+            color: gold;
+            font-size: 1.7rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 520px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .product-card {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.92);
+        }
+
+        .product-card .content {
+            padding: 12px;
+        }
+
+        .product-card .name {
+            margin: 0 0 6px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .product-card .meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-family: "Poppins", sans-serif;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             border: none;
-            border-radius: 5px;
-        }
-
-        .form-container button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: gold;
-            color: rgb(0, 0, 0);
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: gold;
+            color: #111;
             cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            transition: transform 0.15s ease, background-color 0.2s ease;
+            text-decoration: none;
+            user-select: none;
         }
+
+        .btn:hover {
+            background-color: rgb(122, 104, 1);
+            transform: translateY(-1px);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .cart-item .title {
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .cart-item .line {
+            font-family: "Poppins", sans-serif;
+            color: rgba(255, 255, 255, 0.88);
+            margin-top: 4px;
+            font-size: 0.95rem;
+        }
+
+        .qty {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .qty button {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(0, 0, 0, 0.25);
+            color: #fff;
+            cursor: pointer;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+        }
+
+        .qty span {
+            min-width: 26px;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .cart-summary {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: "Poppins", sans-serif;
+            gap: 12px;
+        }
+
+        .total {
+            font-weight: 800;
+            color: gold;
+        }
+
+        .empty {
+            font-family: "Poppins", sans-serif;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 10px;
+        }
+
+        .checkout-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkout-form label {
+            font-family: "Poppins", sans-serif;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .checkout-form input,
+        .checkout-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(0, 0, 0, 0.22);
+            color: #fff;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .checkout-form input::placeholder,
+        .checkout-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .checkout-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .note {
+            font-family: "Poppins", sans-serif;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.92rem;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+                /* keep footer styles below; main ordering UI uses .panel/.layout */
         @media (max-width: 768px) {
-            .form-container {
-            width: 90%;
-            padding: 30px;
-            }
-
-            .form-container input {
-            width: 100% auto;
-            }
-
-            .form-container h2 {
-            font-size: 1.5em;
-            }
-
-            .form-container button {
-            padding: 8px 15px;
-            }
+                    .page {
+                        padding-top: 26px;
+                    }
         }
 
         @media (max-width: 480px) {
-            .form-container h2 {
-            font-size: 1.2em;
-            }
-
-            .form-container {
-            padding: 10px;
-            }
-
-            .form-container button {
-            padding: 6px 10px;
-            font-size: 0.9em;
+            .page-title {
+                font-size: 2rem;
             }
         }
-
-.form-container button:hover {
-            background-color:  rgb(117, 117, 2);
-}
 
 footer {
     background-color: #1e1e1f;
@@ -164,18 +382,52 @@ footer {
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Order Your Food</h2>
-        <form>
-            <input type="number" placeholder="Number of Fried Rice" min="0" required aria-label="Number of Fried Rice">
-            <input type="number" placeholder="Number of Fufu" min="0" required aria-label="Number of Fufu">
-            <input type="number" placeholder="Number of Grilled Chicken" min="0" required aria-label="Number of Grilled Chicken">
-            <input type="text" placeholder="Your Contact" required aria-label="Your Contact">
-            <input type="text" placeholder="Your Location" required aria-label="Your Location">
-            <h3 class="cost">Total cost</h3>
-            <button type="submit">Place Order</button> 
-        </form>
-    </div>
+    <main class="page">
+        <h1 class="page-title">Order Your Food</h1>
+        <p class="page-subtitle">Tap a dish to add it to your cart, then checkout with your contact and location.</p>
+
+        <div class="layout">
+            <section class="panel" aria-labelledby="menu-title">
+                <h2 id="menu-title">Menu</h2>
+                <div class="products-grid" id="products" aria-live="polite"></div>
+                <p class="note">Prices are shown in Ghs. Orders are placed locally (no online payment).</p>
+            </section>
+
+            <aside class="panel" aria-labelledby="cart-title">
+                <h2 id="cart-title">Your Cart</h2>
+                <div id="cartEmpty" class="empty">Your cart is empty. Add an item to begin.</div>
+                <div id="cartItems" class="cart-items" hidden></div>
+
+                <div class="cart-summary" aria-live="polite">
+                    <div>Total</div>
+                    <div class="total" id="cartTotal">Ghs 0</div>
+                </div>
+
+                <div style="height: 12px;"></div>
+
+                <h2 id="checkout-title">Checkout</h2>
+                <form class="checkout-form" id="checkoutForm">
+                    <div>
+                        <label for="contact">Contact</label>
+                        <input id="contact" name="contact" type="text" placeholder="Your phone number" autocomplete="tel" required>
+                    </div>
+                    <div>
+                        <label for="location">Location</label>
+                        <input id="location" name="location" type="text" placeholder="Delivery location" autocomplete="street-address" required>
+                    </div>
+                    <div>
+                        <label for="notes">Notes (optional)</label>
+                        <textarea id="notes" name="notes" rows="3" placeholder="Any special instructions?"></textarea>
+                    </div>
+                    <div class="checkout-actions">
+                        <button class="btn" type="submit" id="placeOrderBtn">Place Order</button>
+                        <button class="btn secondary" type="button" id="clearCartBtn">Clear Cart</button>
+                    </div>
+                    <div class="note" id="checkoutHint">Add at least one item to place an order.</div>
+                </form>
+            </aside>
+        </div>
+    </main>
     <footer>
         <div class="footer-container">
             <div class="footer-about">
@@ -197,49 +449,200 @@ footer {
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-   
-    const prices = {
-        friedRice: 40,    
-        fufu: 65,        
-        grilledChicken: 35 
-    };
+        document.addEventListener('DOMContentLoaded', function () {
+            const products = [
+                {
+                    id: 'friedRice',
+                    name: 'Fried rice with grilled chicken',
+                    price: 40,
+                    image: 'assets/Vegetable Fried Rice - Indian style.jpeg'
+                },
+                {
+                    id: 'fufu',
+                    name: 'Fufu with light soup',
+                    price: 65,
+                    image: 'assets/fufu.png'
+                },
+                {
+                    id: 'grilledChicken',
+                    name: 'Chicken Grill',
+                    price: 35,
+                    image: 'assets/chicken.jpeg'
+                }
+            ];
 
-   
-    const form = document.querySelector('form');
-    const friedRiceInput = form.querySelector('input[aria-label="Number of Fried Rice"]');
-    const fufuInput = form.querySelector('input[aria-label="Number of Fufu"]');
-    const grilledChickenInput = form.querySelector('input[aria-label="Number of Grilled Chicken"]');
-    const totalCostDisplay = form.querySelector('.cost');
+            const cart = new Map(); // productId -> qty
 
-    // Function to calculate total cost
-    function calculateTotal() {
-        const friedRiceQty = parseInt(friedRiceInput.value) || 0;
-        const fufuQty = parseInt(fufuInput.value) || 0;
-        const grilledChickenQty = parseInt(grilledChickenInput.value) || 0;
+            const productsEl = document.getElementById('products');
+            const cartEmptyEl = document.getElementById('cartEmpty');
+            const cartItemsEl = document.getElementById('cartItems');
+            const cartTotalEl = document.getElementById('cartTotal');
+            const checkoutForm = document.getElementById('checkoutForm');
+            const placeOrderBtn = document.getElementById('placeOrderBtn');
+            const clearCartBtn = document.getElementById('clearCartBtn');
+            const checkoutHint = document.getElementById('checkoutHint');
 
-        const total = (friedRiceQty * prices.friedRice) + 
-                     (fufuQty * prices.fufu) + 
-                     (grilledChickenQty * prices.grilledChicken);
+            function formatMoney(amount) {
+                return `Ghs ${amount}`;
+            }
 
-        totalCostDisplay.textContent = `Total cost: ${total} Ghs`;
-    }
+            function getProduct(productId) {
+                return products.find(p => p.id === productId);
+            }
 
-    // Add event listeners to all quantity inputs
-    [friedRiceInput, fufuInput, grilledChickenInput].forEach(input => {
-        input.addEventListener('input', calculateTotal);
-    });
+            function getCartTotal() {
+                let total = 0;
+                for (const [productId, qty] of cart.entries()) {
+                    const product = getProduct(productId);
+                    if (!product) continue;
+                    total += product.price * qty;
+                }
+                return total;
+            }
 
-    // Calculate initial total (in case of default values)
-    calculateTotal();
+            function getCartCount() {
+                let count = 0;
+                for (const qty of cart.values()) count += qty;
+                return count;
+            }
 
-    // Form submission handler
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Order placed successfully! Total: ' + totalCostDisplay.textContent);
-        // Here you would typically send the data to a server
-    });
-});
+            function setQty(productId, nextQty) {
+                const qty = Math.max(0, nextQty);
+                if (qty === 0) cart.delete(productId);
+                else cart.set(productId, qty);
+                renderCart();
+            }
+
+            function addToCart(productId) {
+                const current = cart.get(productId) || 0;
+                setQty(productId, current + 1);
+            }
+
+            function renderProducts() {
+                productsEl.innerHTML = '';
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async">
+                        <div class="content">
+                            <p class="name">${product.name}</p>
+                            <div class="meta">
+                                <span>${formatMoney(product.price)}</span>
+                                <button class="btn" type="button" data-add="${product.id}" aria-label="Add ${product.name} to cart">Add</button>
+                            </div>
+                        </div>
+                    `;
+                    productsEl.appendChild(card);
+                });
+
+                productsEl.addEventListener('click', (e) => {
+                    const btn = e.target.closest('button[data-add]');
+                    if (!btn) return;
+                    const productId = btn.getAttribute('data-add');
+                    addToCart(productId);
+                });
+            }
+
+            function renderCart() {
+                const hasItems = cart.size > 0;
+                cartEmptyEl.hidden = hasItems;
+                cartItemsEl.hidden = !hasItems;
+
+                const total = getCartTotal();
+                cartTotalEl.textContent = formatMoney(total);
+
+                const canCheckout = getCartCount() > 0;
+                placeOrderBtn.disabled = !canCheckout;
+                placeOrderBtn.style.opacity = canCheckout ? '1' : '0.6';
+                placeOrderBtn.style.cursor = canCheckout ? 'pointer' : 'not-allowed';
+                checkoutHint.textContent = canCheckout ? 'Ready when you are.' : 'Add at least one item to place an order.';
+
+                if (!hasItems) {
+                    cartItemsEl.innerHTML = '';
+                    return;
+                }
+
+                cartItemsEl.innerHTML = '';
+                for (const [productId, qty] of cart.entries()) {
+                    const product = getProduct(productId);
+                    if (!product) continue;
+
+                    const row = document.createElement('div');
+                    row.className = 'cart-item';
+                    row.innerHTML = `
+                        <div>
+                            <p class="title">${product.name}</p>
+                            <div class="line">${formatMoney(product.price)} each</div>
+                        </div>
+                        <div class="qty" aria-label="Quantity controls">
+                            <button type="button" data-dec="${product.id}" aria-label="Decrease ${product.name}">−</button>
+                            <span aria-label="Quantity">${qty}</span>
+                            <button type="button" data-inc="${product.id}" aria-label="Increase ${product.name}">+</button>
+                        </div>
+                    `;
+                    cartItemsEl.appendChild(row);
+                }
+            }
+
+            cartItemsEl.addEventListener('click', (e) => {
+                const inc = e.target.closest('button[data-inc]');
+                const dec = e.target.closest('button[data-dec]');
+                if (!inc && !dec) return;
+                const productId = (inc || dec).getAttribute(inc ? 'data-inc' : 'data-dec');
+                const current = cart.get(productId) || 0;
+                if (inc) setQty(productId, current + 1);
+                else setQty(productId, current - 1);
+            });
+
+            clearCartBtn.addEventListener('click', () => {
+                cart.clear();
+                renderCart();
+            });
+
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (getCartCount() <= 0) {
+                    alert('Please add at least one item to your cart.');
+                    return;
+                }
+
+                const contact = document.getElementById('contact').value.trim();
+                const location = document.getElementById('location').value.trim();
+                const notes = document.getElementById('notes').value.trim();
+
+                if (!contact || !location) {
+                    alert('Please enter your contact and location.');
+                    return;
+                }
+
+                const lines = [];
+                for (const [productId, qty] of cart.entries()) {
+                    const product = getProduct(productId);
+                    if (!product) continue;
+                    lines.push(`${qty} × ${product.name}`);
+                }
+                const message = [
+                    'Order placed successfully!',
+                    `Total: ${formatMoney(getCartTotal())}`,
+                    '',
+                    'Items:',
+                    ...lines,
+                    '',
+                    `Contact: ${contact}`,
+                    `Location: ${location}`,
+                    notes ? `Notes: ${notes}` : ''
+                ].filter(Boolean).join('\n');
+
+                alert(message);
+                cart.clear();
+                checkoutForm.reset();
+                renderCart();
+            });
+
+            renderProducts();
+            renderCart();
+        });
     </script>
 </body>
 </html>

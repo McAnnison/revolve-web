@@ -6,9 +6,30 @@
     scroll-behavior: smooth;
 }
 
+:root {
+    --glass-blur: 14px;
+    --glass-sat: 140%;
+    --glass-border-light: rgba(255, 255, 255, 0.28);
+    --glass-border-dark: rgba(255, 255, 255, 0.14);
+    --glass-bg-dark: rgba(0, 0, 0, 0.28);
+    --glass-bg-dark-strong: rgba(0, 0, 0, 0.55);
+    --glass-bg-light: rgba(255, 255, 255, 0.62);
+    --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
 body {
-    animation: rollInFromBelow 0.8s ease-out;
+    animation: rollInFromBelow 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto;
+    }
+
+    body {
+        animation: none !important;
+    }
 }
 
 
@@ -24,11 +45,15 @@ body {
 }
 
 @keyframes rollInFromBelow {
-    from {
+    0% {
         opacity: 0;
-        transform: translateY(100vh);
+        transform: translateY(70px);
     }
-    to {
+    70% {
+        opacity: 1;
+        transform: translateY(-8px);
+    }
+    100% {
         opacity: 1;
         transform: translateY(0);
     }
@@ -48,7 +73,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.3); 
+    background: var(--glass-bg-dark);
+    border: 1px solid var(--glass-border-dark);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
 }
 
 .logo {
@@ -118,7 +146,10 @@ header {
     top: 20px;
     right: 20px;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.7);
+    background: var(--glass-bg-dark-strong);
+    border: 1px solid var(--glass-border-dark);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
     padding: 10px;
     border-radius: 5px;
     transition: all 0.3s ease;
@@ -146,11 +177,13 @@ header {
     position: fixed;
     top: 0;
     right: -250px;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(0, 0, 0, 0.68);
+    border-left: 1px solid var(--glass-border-dark);
     transition: all 0.3s ease;
     padding-top: 80px;
     z-index: 999;
-    backdrop-filter: blur(0);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
 }
 
 .sidebar.active {
@@ -351,6 +384,11 @@ html {
     max-width: 300px;
     padding: 20px;
     border-radius: 10px;
+    background: var(--glass-bg-light);
+    border: 1px solid var(--glass-border-light);
+    backdrop-filter: blur(12px) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(12px) saturate(var(--glass-sat));
+    box-shadow: var(--glass-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -391,7 +429,8 @@ html {
     overflow: hidden;
     border: 50px 20px 50px 20px;
     bottom: 0;
-    height: 1100px;
+    height: auto;
+    min-height: 1100px;
 }
 
 .container img {
@@ -452,7 +491,11 @@ html {
 }
 
 .statistics-section {
-    background-color: #2a2a2a;
+    background: rgba(42, 42, 42, 0.55);
+    border: 1px solid var(--glass-border-dark);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    box-shadow: var(--glass-shadow);
     padding: 30px;
     border-radius: 10px;
     width: 100%;
@@ -766,7 +809,10 @@ html {
     max-width: 600px;
     margin: 50px auto;
     padding: 40px;
-    background-color: #f9f9f9;
+    background: rgba(249, 249, 249, 0.72);
+    border: 1px solid var(--glass-border-light);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     animation: fadeIn 1s ease-in-out;
@@ -855,6 +901,17 @@ footer {
     color: #ecf0f1;
     padding: 60px 20px 20px;
     font-family: "Poppins", sans-serif;
+}
+
+.footer-about,
+.footer-links,
+.footer-download {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+    border-radius: 12px;
+    padding: 18px;
 }
 
 .footer-container {
